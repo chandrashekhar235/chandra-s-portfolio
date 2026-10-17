@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm Editorial Paper Palette */
+  --paper: #FBF9F5;
+  --surface: #F3EFEA;
+  --surface-hover: #ECE7DF;
+  --ink: #181716;
+  --muted: #57534D;
+  --muted-light: #6E6A63;
+  --border: rgba(24, 23, 22, 0.14);
+  --border-strong: rgba(24, 23, 22, 0.28);
+
+  /* Single Confident Accent: Warm Terracotta / Rust Vermilion */
+  --accent: #B5421E;
+  --accent-hover: #9E3717;
+  --accent-subtle: rgba(181, 66, 30, 0.08);
+  --accent-border: rgba(181, 66, 30, 0.3);
+
+  /* Focus and selection */
+  --selection-bg: #B5421E;
+  --selection-fg: #FFFFFF;
+}
+
+html[data-theme='dark'] {
+  --paper: #141413;
+  --surface: #1D1C1A;
+  --surface-hover: #262523;
+  --ink: #ECEAE4;
+  --muted: #A6A29A;
+  --muted-light: #827E76;
+  --border: rgba(236, 234, 228, 0.14);
+  --border-strong: rgba(236, 234, 228, 0.28);
+
+  --accent: #E5633C;
+  --accent-hover: #F27048;
+  --accent-subtle: rgba(229, 99, 60, 0.14);
+  --accent-border: rgba(229, 99, 60, 0.38);
+
+  --selection-bg: #E05D35;
+  --selection-fg: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+/* Custom Focus Ring for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Typography Helpers */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+/* Layout Utilities */
+.container-editorial {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2.5rem);
+  padding-right: clamp(1rem, 4vw, 2.5rem);
+  padding-left: max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-left));
+  padding-right: max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-right));
+}
+
+.scroll-mt-editorial {
+  scroll-margin-top: clamp(4.5rem, 8vh, 6rem);
+}
+
+/* Hairline rule */
+.editorial-rule {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Clean Button Styles */
+.btn-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  background-color: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+}
+
+.btn-editorial:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  background-color: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface);
+  border-color: var(--ink);
+}
+
+/* Editorial Plate Hatch Pattern (for designed placeholder media frames) */
+.editorial-plate {
+  background-color: var(--surface);
+  background-image: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 8px,
+      rgba(24, 23, 22, 0.04) 8px,
+      rgba(24, 23, 22, 0.04) 9px);
+}
+
+[data-theme='dark'] .editorial-plate {
+  background-image: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.04) 8px,
+      rgba(255, 255, 255, 0.04) 9px);
+}
+
+/* Shimmer sweep effect */
+.editorial-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.editorial-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(192, 74, 38, 0.06),
+      transparent);
+  animation: shimmer-sweep 5s infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+
+  30%,
+  100% {
+    left: 100%;
+  }
+}
+
+/* Paper Grain Overlay: Static SVG noise, 2.5% opacity, zero animation cost */
+.paper-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* View Transitions Circular Reveal */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 999;
+}
+
+/* Animated underline draw on links */
+.link-draw {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-draw::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-draw:hover::after {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+
+/* Print Stylesheet: Clean single-page executive profile */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+
+  header,
+  footer,
+  nav,
+  button,
+  .paper-grain,
+  [role="dialog"],
+  #proof-piece,
+  #contact,
+  .btn-editorial,
+  .btn-secondary {
+    display: none !important;
+  }
+
+  .container-editorial {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  article {
+    page-break-inside: avoid;
+    border: none !important;
+    padding: 10pt 0 !important;
+  }
+}
