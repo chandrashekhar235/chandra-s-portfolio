@@ -126,6 +126,61 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+  id: 'mind-scroll-ai',
+  title: 'MindScroll AI',
+  subtitle: 'ML-Powered Student Social Media & Mental Health Impact Predictor',
+  timeline: '2025', // adjust to when you built it
+  role: 'Full Stack & ML Developer',
+  featured: true,
+  whatIBuilt: [
+    'Trained a Random Forest regression pipeline on 5,000 student survey responses to predict a mental health score from screen time, sleep, stress, and lifestyle habits (Test R² 0.864).',
+    'Built a FastAPI backend with Pydantic validation serving prediction, what-if simulation, cohort insights, and model card endpoints.',
+    'Designed a 4-step assessment wizard with an animated SVG score gauge, percentile rank, and a driving-factors waterfall showing what helps or strains the score.',
+    'Created a real-time what-if habit simulator that shows score changes from lifestyle tweaks, plus an insights dashboard with 6 interactive charts and cohort filtering.',
+    'Shipped a dual-theme (dark/light) responsive UI with Framer Motion animations, a Three.js signal orb, PDF report export, and an open model card for transparency.',
+  ],
+  architectureOverview: {
+    label: 'Simplified Overview',
+    draft: true,
+    nodes: [
+      { id: 'client', label: 'React Client', sub: 'Wizard, simulator + insights' },
+      { id: 'api', label: 'FastAPI Backend', sub: 'Pydantic + REST endpoints' },
+      { id: 'ml', label: 'ML Pipeline', sub: 'Scikit-learn Random Forest' },
+      { id: 'data', label: 'Survey Dataset', sub: '5,000 student records' },
+    ],
+    connections: [
+      { from: 'client', to: 'api', label: 'REST requests' },
+      { from: 'api', to: 'ml', label: 'Feature transform + inference' },
+      { from: 'api', to: 'data', label: 'Insights aggregation' },
+    ],
+    confirmationNote: 'Simplified overview based on the project stack.',
+  },
+  stack: [
+    'React',
+    'TypeScript',
+    'Vite',
+    'Tailwind CSS',
+    'Framer Motion',
+    'Recharts',
+    'FastAPI',
+    'Scikit-learn',
+    'Pandas',
+    'Docker',
+  ],
+  links: {
+    github: {
+      label: 'Source Code',
+      url: 'https://github.com/chandrashekhar235/mind_scroll_ai',
+      isTodo: false,
+    },
+    live: {
+      label: 'Live Platform',
+      url: 'https://mindscrollai-gamma.vercel.app',
+      isTodo: false,
+    },
+  },
+},
+  {
     id: 'foundrai',
     title: 'FoundrAI',
     subtitle: 'AI-Powered Startup Analysis & Validation Platform',
