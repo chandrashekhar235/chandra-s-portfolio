@@ -68,7 +68,7 @@ export const PERSONAL_INFO = {
   status: 'Final-year Engineering Student',
   institution: '',
   location: 'Delhi, India',
-  email: 'sahiljoshi399@gmail.com',
+  email: 'chandrashekhar07005@gmail.com',
   github: 'https://github.com/chandrashekhar235',
   linkedin: 'https://www.linkedin.com/in/chandra-shekhar-a29789284',
   resumePdf:
