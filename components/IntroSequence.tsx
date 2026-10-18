@@ -58,7 +58,7 @@ export default function IntroSequence() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.25, duration: 0.4 }}
+              transition={{ delay: 0.25, duration: 0.8 }}
               className="mt-3 font-mono text-xs text-muted uppercase tracking-widest"
             >
               Chandra Shekhar
